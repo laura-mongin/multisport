@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model course_a_pied {
+  seance_id Int      @id
+  distance  Decimal? @db.Decimal(5, 2)
+  seance    seance   @relation(fields: [seance_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model danse_classique {
+  seance_id       Int    @id
+  ressenti_global Int?
+  souplesse       Int?
+  technique       Int?
+  musicalite      Int?
+  seance          seance @relation(fields: [seance_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model exercice {
+  id               Int                @id @default(autoincrement())
+  nom              String             @db.VarChar(100)
+  archive          Boolean            @default(false)
+  exercice_realise exercice_realise[]
+}
+
+model exercice_realise {
+  id          Int      @id @default(autoincrement())
+  seance_id   Int
+  exercice_id Int
+  exercice    exercice @relation(fields: [exercice_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  seance      seance   @relation(fields: [seance_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  serie       serie[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model seance {
+  id               Int                @id @default(autoincrement())
+  sport            String             @db.VarChar(30)
+  titre            String?            @db.VarChar(100)
+  date_heure       DateTime           @db.Timestamp(6)
+  statut           String             @db.VarChar(10)
+  duree_reelle     Int?
+  note             String?
+  course_a_pied    course_a_pied?
+  danse_classique  danse_classique?
+  exercice_realise exercice_realise[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model serie {
+  id                  Int              @id @default(autoincrement())
+  exercice_realise_id Int
+  charge              Decimal?         @db.Decimal(6, 2)
+  repetitions         Int?
+  exercice_realise    exercice_realise @relation(fields: [exercice_realise_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}

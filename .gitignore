@@ -1,0 +1,13 @@
+# Dépendances Node.js
+backend/node_modules/
+front-end/node_modules/
+
+# Variables d'environnement
+backend/.env
+front-end/.env
+
+# Client Prisma généré
+backend/generated/prisma/
+
+# Fichiers système macOS
+.DS_Store
