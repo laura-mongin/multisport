@@ -8,14 +8,14 @@ Je pratique plusieurs sports, mais suivre sa progression devient plus compliqué
 
 Ce projet est aussi l'occasion de développer une application web plus complète, de la conception de la base de données jusqu'à l'interface utilisateur, en passant par le développement d'une API.
 
-## Fonctionnalités
+## Fonctionnalités prévues
 
-- [ ] Enregistrer, modifier et supprimer une séance
-- [ ] Planifier des séances et consulter son historique
-- [ ] Filtrer les séances par sport
-- [ ] Suivre ses entraînements en course à pied, musculation et danse classique
-- [ ] Enregistrer les détails propres à chaque discipline
-- [ ] Visualiser ses statistiques : temps d'entraînement, nombre de séances et répartition par sport
+- Enregistrer, modifier et supprimer une séance
+- Planifier des séances et consulter son historique
+- Filtrer les séances par sport
+- Suivre ses entraînements en course à pied, musculation et danse classique
+- Enregistrer les détails propres à chaque discipline
+- Visualiser ses statistiques : temps d'entraînement, nombre de séances et répartition par sport
 
 ## Roadmap
 
@@ -36,8 +36,8 @@ Le projet est développé progressivement pour mettre en pratique la conception 
 
 ## Lancer le projet
 
-Le lancement local sera documenté une fois la configuration du frontend et du backend stabilisée.
+🚧 Les instructions seront ajoutées une fois le projet utilisable de bout en bout (backend et interface).
 
 ## Statut
 
-🚧 En développement. Le modèle de données PostgreSQL est en place et le backend communique avec la base via Prisma. La prochaine étape est de développer les opérations CRUD de l'API avant de construire l'interface utilisateur.
+🚧 En développement actif. Le modèle de données PostgreSQL est en place, le backend communique avec la base via Prisma et une première route permet de récupérer les séances. La prochaine étape est le développement des opérations CRUD de l'API, avant de construire l'interface.
