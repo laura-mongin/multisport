@@ -12,6 +12,15 @@ app.get('/seances', async (req, res) => {
     res.json(seances);
 });
 
+app.get('/seances/:id', async (req, res) => { 
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id)) {
+    return res.status(400).send('non valide')
+  }
+  const seancesId = await prisma.seance.findUnique({ where: { id: id, }, });
+  res.json(seancesId);
+});
+
 app.listen(PORT, () => {
   console.log(`Le serveur est démarré sur : http://localhost:${PORT}`);
 });
