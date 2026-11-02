@@ -8,8 +8,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/seances', async (req, res) => {
+  try {
     const seances = await prisma.seance.findMany();
     res.json(seances);
+  } catch (error) {
+    console.error("Erreur sur GET /seances : findMany", error);
+    return res.status(500).send('erreur du serveur')
+  }
 });
 
 app.get('/seances/:id', async (req, res) => { 
