@@ -17,11 +17,18 @@ app.get('/seances/:id', async (req, res) => {
   if (!Number.isInteger(id)) {
     return res.status(400).send('non valide')
   }
+  
+  try {
   const seances = await prisma.seance.findUnique({ where: { id: id, }, });
-  if (seances == null) {
+  if (seances === null) {
     return res.status(404).send("séance introuvable")
   }
   res.json(seances);
+  } catch (error) {
+  console.error("Erreur sur GET /seances/:id findUnique", error);
+  return res.status(500).send('erreur du serveur')
+  }
+
 });
 
 app.listen(PORT, () => {
